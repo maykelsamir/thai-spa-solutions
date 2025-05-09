@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thai Spa Solutions</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffdf9;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    header, footer {
+      background: #f2e8dc;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    h1, h2 {
+      color: #b2965a;
+      margin-bottom: 10px;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px 0;
+    }
+    nav {
+      background: #fff8ee;
+      text-align: center;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #a8843c;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #d4af37;
+    }
+    .lang-toggle {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      margin: 0 5px;
+    }
+    .section {
+      padding: 50px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-in-out;
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .ar {
+      display: none;
+      direction: rtl;
+      font-family: 'Arial', sans-serif;
+    }
+    footer p {
+      font-size: 0.9rem;
+      color: #777;
+    }
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  </style>
+  <script>
+    function toggleLang(lang) {
+      document.querySelectorAll('.en, .ar').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'block');
+    }
+
+    window.onload = () => {
+      toggleLang('en');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.section').forEach(section => {
+        observer.observe(section);
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="lang-toggle">
+      <button onclick="toggleLang('en')">English</button> | 
+      <button onclick="toggleLang('ar')">العربية</button>
+    </div>
+    <h1 class="en">Thai Spa Solutions</h1>
+    <h1 class="ar">تاي سبا سولوشنز</h1>
+    <p class="en">Elevating Spa Experiences</p>
+    <p class="ar">نُرقّي تجربة السبا برُقي</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container">
+    <div id="about" class="section">
+      <h2 class="en">About Us</h2>
+      <p class="en">Thai Spa Solutions is a premier spa management company delivering luxury experiences and operational excellence.</p>
+      <h2 class="ar">من نحن</h2>
+      <p class="ar">تاي سبا سولوشنز هي شركة رائدة في إدارة مراكز السبا، تقدّم خدمات فاخرة ومعايير تشغيلية عالية الجودة.</p>
+    </div>
+
+    <div id="services" class="section">
+      <h2 class="en">Our Services</h2>
+      <ul class="en">
+        <li>Spa Center Management</li>
+        <li>Branding & Concept Development</li>
+        <li>Training Programs</li>
+        <li>Marketing & Client Retention</li>
+        <li>Product Curation</li>
+        <li>Tech Integration</li>
+      </ul>
+      <h2 class="ar">خدماتنا</h2>
+      <ul class="ar">
+        <li>إدارة مراكز السبا</li>
+        <li>تطوير العلامة التجارية والمفاهيم</li>
+        <li>برامج تدريبية</li>
+        <li>التسويق والحفاظ على العملاء</li>
+        <li>تنسيق المنتجات</li>
+        <li>دمج التقنيات الحديثة</li>
+      </ul>
+    </div>
+
+    <div id="why" class="section">
+      <h2 class="en">Why Choose Us</h2>
+      <p class="en">We offer tailored strategies, luxurious aesthetics, and sustainable operations rooted in deep industry knowledge.</p>
+      <h2 class="ar">لماذا تختارنا؟</h2>
+      <p class="ar">نُقدّم حلولاً مخصصة، وطابعًا فاخرًا، وتشغيلًا مستدامًا مبنيًا على خبرة عميقة في هذا المجال.</p>
+    </div>
+
+    <div id="contact" class="section">
+      <h2 class="en">Contact Us</h2>
+      <p class="en">Email: thaispasolutions@gmail.com<br>Phone: +964 0750 3715410<br>Location: Erbil, Enkawa</p>
+      <h2 class="ar">اتصل بنا</h2>
+      <p class="ar">البريد الإلكتروني: thaispasolutions@gmail.com<br>الهاتف: +964 0750 3715410<br>العنوان: العراق، أربيل، عنكاوا</p>
+    </div>
+  </div>
+
+  <footer>
+    <p class="en">&copy; 2025 Thai Spa Solutions. All rights reserved.</p>
+    <p class="ar">&copy; ٢٠٢٥ تاي سبا سولوشنز. جميع الحقوق محفوظة.</p>
+  </footer>
+
+</body>
+</html>
